@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function TodoForm() {
+function TodoForm({ addTodo }) {
   // Состояние хранящее в себе содержимое инпута
   const [text, setText] = useState('');
 
@@ -8,6 +8,8 @@ function TodoForm() {
   function onSubmitHandler(event) {
     //Чтобы страница не обновлялась
     event.preventDefault();
+    // Чтобы текст из инпута добавлялся
+    addTodo(text);
     //Чтобы при submit инпут очищался
     setText('');
   }
