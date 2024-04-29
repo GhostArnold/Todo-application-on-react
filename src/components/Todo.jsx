@@ -1,9 +1,10 @@
+import styles from './Todo.module.css';
 function Todo({ todo, index, deleteTodo }) {
   // Выводим todo
   return (
-    <div>
+    <div className={styles.todo} onDoubleClick={() => deleteTodo(index)}>
       {/* Передаём калбэк в событие двойного клика и там вызываем фильтрацию, куда пишем параметр индекса при переборе*/}
-      <div onDoubleClick={() => deleteTodo(index)}>{todo}</div>
+      <div className={styles.todoItem}>{todo}</div>
     </div>
   );
 }

@@ -1,0 +1,20 @@
+.submitForm {
+  width: 100%;
+}
+.submitForm form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.submitForm input {
+  padding: 12px 10px;
+  width: 65%;
+  border: 0;
+}
+.submitForm button {
+  padding: 12px 30px;
+  margin-left: 3px;
+  border: 0;
+  background-color: #845afc;
+  cursor: pointer;
+}

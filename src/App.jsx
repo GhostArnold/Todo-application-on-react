@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import './App.css';
+//Импорт модуля css для App
+import styles from './App.module.css';
 //Импорт компонента TodoForm
 import TodoForm from './components/TodoForm';
 // Импорт компонента TodoList
@@ -25,11 +27,13 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Todo application</h1>
-      {/* addTodoHAndler - передаём обработчик */}
-      <TodoForm addTodo={addTodoHandler} />
-      {/* Передаём массив */}
-      <TodoList todos={todos} deleteTodo={deleteTodoHandler} />
+      <div className={styles.mainBlock}>
+        <h1>Todo application</h1>
+        {/* addTodoHAndler - передаём обработчик */}
+        <TodoForm addTodo={addTodoHandler} />
+        {/* Передаём массив */}
+        <TodoList todos={todos} deleteTodo={deleteTodoHandler} />
+      </div>
     </div>
   );
 }

@@ -1,0 +1,12 @@
+.todo {
+  background-color: #845afc;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin: 17px 0;
+  padding: 5px 17px;
+}
+.todoItem {
+  font-size: 30px;
+  text-align: left;
+}
