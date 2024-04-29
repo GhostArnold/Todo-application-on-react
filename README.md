@@ -1,4 +1,3 @@
-#React project for the react course
 
 ## Available Scripts
 
