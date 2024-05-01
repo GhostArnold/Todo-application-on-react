@@ -1,4 +1,6 @@
 import { useState } from 'react';
+// Уникальный id
+import { v4 as uuidv4 } from 'uuid';
 import './App.css';
 //Импорт модуля css для App
 import styles from './App.module.css';
@@ -12,17 +14,23 @@ function App() {
 
   //Создаём обработчик для добавления элементов в массив. text - новый элемент
   const addTodoHandler = (text) => {
+    //Объект, который предсставляет из себя элементы массива
+    const newTodo = {
+      //Текст
+      text: text,
+      //Завершенно или нет
+      isCompleted: false,
+      //Айдишник
+      id: uuidv4(),
+    };
     // ...todos - перебор уже существующих элементов в массиве
-    setTodos([...todos, text]);
+    setTodos([...todos, newTodo]);
   };
 
   // Создаём обработчик удаления
-  // index - параметр в который мы в дальнейшем засунем индекса элементов массивов
-  const deleteTodoHandler = (index) => {
-    // idx представляет индекс текущего элемента в массиве todos. _ - затычка, вместо массива todos, т.к мы его не используем
-    //Это всё шаблонные параметры
-    // idx - текущий элемент, который мы получаем при клике
-    setTodos(todos.filter((_, idx) => index !== idx));
+  const deleteTodoHandler = (id) => {
+    //Мы делаем итерацию по todo.id в объектах массива и сравниваем с тем id, который передаётся в качетсве параметра функции
+    setTodos(todos.filter((todo) => todo.id !== id));
   };
 
   return (
