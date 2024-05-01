@@ -1,0 +1,9 @@
+.mainBlock {
+  padding: 30px;
+  width: 430px;
+  background-color: #1b1b41;
+  margin: 65px auto;
+}
+.mainBlock h1 {
+  margin-bottom: 15px;
+}
