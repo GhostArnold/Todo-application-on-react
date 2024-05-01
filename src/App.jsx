@@ -33,6 +33,20 @@ function App() {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
+  const toggleTodoHandler = (id) => {
+    setTodos(
+      todos.map((todo) => {
+        // Если мы нашли todo.id который совпадает с id при вызове функции то..
+        // Подход с созданием нового объекта называется иммутабельностью данных и он часто используется в React и других JavaScript-проектах для предотвращения нежелательных изменений состояния
+        return todo.id === id
+          ? // Если условие из пункта 1 истинно, то создается новый объект задачи, копируя все свойства текущей задачи (...todo), а затем обновляя свойство isCompleted на противоположное значение с помощью !todo.isCompleted. Например, если isCompleted было false, теперь оно станет true, и наоборот.
+            { ...todo, isCompleted: !todo.isCompleted }
+          : // Иначе всё остаётся так же и объект пересоздаётся
+            { ...todo };
+      })
+    );
+  };
+
   return (
     <div className="App">
       <div className={styles.mainBlock}>
@@ -40,7 +54,11 @@ function App() {
         {/* addTodoHAndler - передаём обработчик */}
         <TodoForm addTodo={addTodoHandler} />
         {/* Передаём массив */}
-        <TodoList todos={todos} deleteTodo={deleteTodoHandler} />
+        <TodoList
+          todos={todos}
+          deleteTodo={deleteTodoHandler}
+          toggleTodo={toggleTodoHandler}
+        />
       </div>
     </div>
   );
