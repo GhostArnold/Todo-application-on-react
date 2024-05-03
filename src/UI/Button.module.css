@@ -1,0 +1,14 @@
+.blockButton {
+  padding: 12px 15px;
+  margin-top: 15px;
+  margin-left: 16px;
+  border-radius: 14px;
+  border: 0;
+  cursor: pointer;
+  background-color: #845afc;
+  font-size: 24px;
+}
+
+.blockButton:hover {
+  transform: scale(1.1);
+}

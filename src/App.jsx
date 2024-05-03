@@ -8,6 +8,8 @@ import styles from './App.module.css';
 import TodoForm from './components/TodoForm';
 // Импорт компонента TodoList
 import TodoList from './components/TodoList';
+//Импорт компонента для удаления всего и удаления всех отмеченных задач
+import TodosActions from './components/TodosActions';
 function App() {
   //Создаём состояние массива, хранящего в себе текст из субмита
   const [todos, setTodos] = useState([]);
@@ -33,6 +35,7 @@ function App() {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
+  // Обработчик для завешённых задач
   const toggleTodoHandler = (id) => {
     setTodos(
       todos.map((todo) => {
@@ -47,12 +50,25 @@ function App() {
     );
   };
 
+  //Обработчик для удаления завершённых задач
+  const deleteCompletedHandler = () => {
+    setTodos(todos.filter((todo) => !todo.isCompleted));
+  };
+
+  const resetHandler = () => {
+    setTodos([]);
+  };
   return (
     <div className="App">
       <div className={styles.mainBlock}>
         <h1>Todo application</h1>
         {/* addTodoHAndler - передаём обработчик */}
         <TodoForm addTodo={addTodoHandler} />
+        <TodosActions
+          todos={todos}
+          deleteCompleted={deleteCompletedHandler}
+          reset={resetHandler}
+        />
         {/* Передаём массив */}
         <TodoList
           todos={todos}
